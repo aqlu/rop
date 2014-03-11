@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>rop</artifactId>
-    <version>${rop.version}</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>rop core</name>
     <description>rest open platform</description>
