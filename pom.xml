@@ -12,7 +12,7 @@
         <rop.version>1.0-SNAPSHOT</rop.version>
 
         <file.encoding>UTF-8</file.encoding>
-        <spring.version>3.2.6.RELEASE</spring.version>
+        <spring.version>3.1.1.RELEASE</spring.version>
         <org.codehaus.jackson.version>1.9.5</org.codehaus.jackson.version>
         <testng.version>6.3</testng.version>
         <mockito.version>1.8.5</mockito.version>
