@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.qianmi</groupId>
     <artifactId>rop-parent</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>pom</packaging>
 
     <properties>
-        <rop.version>1.0.1-SNAPSHOT</rop.version>
+        <rop.version>1.0.2</rop.version>
 
         <file.encoding>UTF-8</file.encoding>
         <spring.version>3.1.1.RELEASE</spring.version>
@@ -44,7 +44,7 @@
         <connection>scm:git:http://git.dev.ofpay.com/git/of642/rop.git</connection>
         <developerConnection>scm:git:http://git.dev.ofpay.com/git/of642/rop.git</developerConnection>
         <url>http://git.dev.ofpay.com/git/of642/rop.git</url>
-      <tag>HEAD</tag>
+      <tag>rop-parent-1.0.2</tag>
   </scm>
 
     <modules>
