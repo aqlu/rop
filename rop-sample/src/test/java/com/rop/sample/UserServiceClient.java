@@ -1,5 +1,4 @@
 /**
- * 版权声明：中图一购网络科技有限公司 版权所有 违者必究 2012 
  * 日    期：12-6-30
  */
 package com.rop.sample;
@@ -10,6 +9,7 @@ import com.rop.client.CompositeResponse;
 import com.rop.client.DefaultRopClient;
 import com.rop.request.UploadFile;
 import com.rop.response.ErrorResponse;
+import com.rop.sample.converter.TelephoneConverter;
 import com.rop.sample.request.*;
 import com.rop.sample.response.CreateUserResponse;
 import com.rop.sample.response.LogonResponse;
@@ -17,7 +17,6 @@ import com.rop.sample.response.UploadUserPhotoResponse;
 import com.rop.sample.response.UserListResponse;
 import com.rop.security.MainErrorType;
 import org.springframework.core.io.ClassPathResource;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -26,7 +25,6 @@ import static org.testng.Assert.*;
 
 /**
  * <pre>
- * 功能说明：
  * </pre>
  *
  * @author 陈雄华
@@ -34,7 +32,7 @@ import static org.testng.Assert.*;
  */
 public class UserServiceClient {
 
-    public static final String SERVER_URL = "http://localhost:8080/admin";
+    public static final String SERVER_URL = "http://localhost:8080/router";
     public static final String APP_KEY = "00001";
     public static final String APP_SECRET = "abcdeabcdeabcdeabcdeabcde";
     private DefaultRopClient ropClient = new DefaultRopClient(SERVER_URL, APP_KEY, APP_SECRET);
@@ -45,8 +43,8 @@ public class UserServiceClient {
     }
 
 
-    @BeforeMethod
-//    @Test
+//    @BeforeMethod
+    @Test
     public void createSession() {
         LogonRequest ropRequest = new LogonRequest();
         ropRequest.setUserName("tomson");
@@ -94,11 +92,16 @@ public class UserServiceClient {
         telephone.setTelephoneCode("12345678");
         createUserRequest.setTelephone(telephone);
 
+        //add1
         response = ropClient.buildClientRequest()
                 .post(createUserRequest, CreateUserResponse.class, "user.add", "1.0");
         assertNotNull(response);
         assertTrue(response.isSuccessful());
         assertTrue(response.getSuccessResponse() instanceof CreateUserResponse);
+
+        //add2
+        response = ropClient.buildClientRequest()
+                .post(createUserRequest, CreateUserResponse.class, "user.add", "1.0");
     }
 
     @Test

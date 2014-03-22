@@ -1,5 +1,4 @@
 /**
- * 版权声明：中图一购网络科技有限公司 版权所有 违者必究 2012 
  * 日    期：12-6-12
  */
 package com.rop.impl;
@@ -21,7 +20,6 @@ import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * <pre>
- * 功能说明：
  * </pre>
  *
  * @author 陈雄华
@@ -33,7 +31,7 @@ public class ServletRequestContextBuilderTest {
     public void testIpParsed() {
         FormattingConversionService conversionService = mock(FormattingConversionService.class);
         SessionManager sessionManager = mock(SessionManager.class);
-        ServletRequestContextBuilder requestContextBuilder = new ServletRequestContextBuilder(conversionService, sessionManager);
+        ServletRequestContextBuilder requestContextBuilder = new ServletRequestContextBuilder(conversionService);
         RopContext ropContext = mock(RopContext.class);
 
         //构造HttpServletRequest
@@ -41,22 +39,21 @@ public class ServletRequestContextBuilderTest {
         servletRequest.setRemoteAddr("1.1.1.1");
 
         //创建SimpleRequestContext
-        SimpleRopRequestContext requestContext = requestContextBuilder.buildBySysParams(ropContext, servletRequest);
+        SimpleRopRequestContext requestContext = requestContextBuilder.buildBySysParams(ropContext, servletRequest,null);
         assertEquals(requestContext.getIp(), "1.1.1.1");
 
         servletRequest.setRemoteAddr("1.1.1.1");
         servletRequest.addHeader(ServletRequestContextBuilder.X_FORWARDED_FOR, "null,2.2.2.2,3.3.3.3");
-        requestContext = requestContextBuilder.buildBySysParams(ropContext, servletRequest);
+        requestContext = requestContextBuilder.buildBySysParams(ropContext, servletRequest,null);
         assertEquals(requestContext.getIp(), "2.2.2.2");
 
         servletRequest.addHeader(ServletRequestContextBuilder.X_REAL_IP, "5.5.5.5");
-        requestContext = requestContextBuilder.buildBySysParams(ropContext, servletRequest);
+        requestContext = requestContextBuilder.buildBySysParams(ropContext, servletRequest,null);
         assertEquals(requestContext.getIp(), "5.5.5.5");
 
     }
 
     /**
-     * 正常情况下的系统参数绑定
      *
      * @throws Exception
      */
@@ -64,7 +61,7 @@ public class ServletRequestContextBuilderTest {
     public void testBuildBySysParams1() throws Exception {
         FormattingConversionService conversionService = mock(FormattingConversionService.class);
         SessionManager sessionManager = mock(SessionManager.class);
-        ServletRequestContextBuilder requestContextBuilder = new ServletRequestContextBuilder(conversionService, sessionManager);
+        ServletRequestContextBuilder requestContextBuilder = new ServletRequestContextBuilder(conversionService);
 
         RopContext ropContext = mock(RopContext.class);
         ServiceMethodHandler methodHandler = mock(ServiceMethodHandler.class);
@@ -85,7 +82,8 @@ public class ServletRequestContextBuilderTest {
         servletRequest.setParameter("param3", "value3");
 
         //创建SimpleRequestContext
-        SimpleRopRequestContext requestContext = requestContextBuilder.buildBySysParams(ropContext, servletRequest);
+        SimpleRopRequestContext requestContext =
+                requestContextBuilder.buildBySysParams(ropContext, servletRequest,null);
 
         assertEquals(requestContext.getAllParams().size(), 10);
         assertEquals(requestContext.getParamValue("param1"), "value1");
@@ -104,7 +102,6 @@ public class ServletRequestContextBuilderTest {
     }
 
     /**
-     * 看错误的参数是否会被自动转为默认的
      *
      * @throws Exception
      */
@@ -112,7 +109,7 @@ public class ServletRequestContextBuilderTest {
     public void testBuildBySysParams2() throws Exception {
         FormattingConversionService conversionService = mock(FormattingConversionService.class);
         SessionManager sessionManager = mock(SessionManager.class);
-        ServletRequestContextBuilder requestContextBuilder = new ServletRequestContextBuilder(conversionService, sessionManager);
+        ServletRequestContextBuilder requestContextBuilder = new ServletRequestContextBuilder(conversionService);
         RopContext ropContext = mock(RopContext.class);
 
 
@@ -123,7 +120,8 @@ public class ServletRequestContextBuilderTest {
 
 
         //创建SimpleRequestContext
-        SimpleRopRequestContext requestContext = requestContextBuilder.buildBySysParams(ropContext, servletRequest);
+        SimpleRopRequestContext requestContext =
+                requestContextBuilder.buildBySysParams(ropContext, servletRequest,null);
         assertEquals(requestContext.getLocale(), Locale.SIMPLIFIED_CHINESE);
         assertEquals(requestContext.getFormat(), "xxx");
         assertEquals(requestContext.getMessageFormat(), MessageFormat.xml);
@@ -138,15 +136,15 @@ public class ServletRequestContextBuilderTest {
     @Test(expectedExceptions = {IllegalArgumentException.class})
     public void testBuildBySysParams3() throws Exception {
         FormattingConversionService conversionService = mock(FormattingConversionService.class);
-        SessionManager sessionManager = mock(SessionManager.class);
-        ServletRequestContextBuilder requestContextBuilder = new ServletRequestContextBuilder(conversionService, sessionManager);
+        ServletRequestContextBuilder requestContextBuilder = new ServletRequestContextBuilder(conversionService);
 
         RopContext ropContext = mock(RopContext.class);
         ServiceMethodHandler methodHandler = mock(ServiceMethodHandler.class);
         when(ropContext.getServiceMethodHandler("method1", "3.0")).thenReturn(methodHandler);
 
         //创建SimpleRequestContext
-        SimpleRopRequestContext requestContext = requestContextBuilder.buildBySysParams(ropContext, new Object());
+        SimpleRopRequestContext requestContext =
+                requestContextBuilder.buildBySysParams(ropContext, new Object(),null);
     }
 
     @Test

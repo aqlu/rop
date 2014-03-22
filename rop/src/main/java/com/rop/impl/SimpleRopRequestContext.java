@@ -60,6 +60,8 @@ public class SimpleRopRequestContext implements RopRequestContext {
 
     private Object rawRequestObject;
 
+    private Object rawResponseObject;
+
     private Map<String, String> allParams;
 
     private String requestId = RopUtils.getUUID();
@@ -98,8 +100,17 @@ public class SimpleRopRequestContext implements RopRequestContext {
         return this.rawRequestObject;
     }
 
+    @Override
+    public Object getRawResponseObject() {
+        return this.rawResponseObject;
+    }
+
     public void setRawRequestObject(Object rawRequestObject) {
         this.rawRequestObject = rawRequestObject;
+    }
+
+    public void setRawResponseObject(Object rawResponseObject) {
+        this.rawResponseObject = rawResponseObject;
     }
 
     public SimpleRopRequestContext(RopContext ropContext) {
@@ -149,6 +160,7 @@ public class SimpleRopRequestContext implements RopRequestContext {
     public void addSession(String sessionId, Session session) {
         if (ropContext != null && ropContext.getSessionManager() != null) {
             ropContext.getSessionManager().addSession(sessionId, session);
+            this.setSessionId(sessionId); // 修复在当次请求中addSession后无法getSession的问题
         }
     }
 

@@ -1,5 +1,5 @@
 /**
- * 版权声明：中图一购网络科技有限公司 版权所有 违者必究 2012 
+ * 版权声明： 版权所有 违者必究 2012
  * 日    期：12-6-2
  */
 package com.rop.utils;
@@ -71,7 +71,7 @@ public class RopUtils {
         } catch (IOException e) {
             throw new RopException(e);
         }
-    }    
+    }
 
     public static String utf8Encoding(String value, String sourceCharsetName) {
         try {
@@ -131,7 +131,7 @@ public class RopUtils {
      * @param asyncContext  异步servlet上下文
      */
     public static void setAsyncContext(AsyncContext asyncContext){
-         asyncContextThreadLocal.set(asyncContext);
+        asyncContextThreadLocal.set(asyncContext);
     }
 
     /**

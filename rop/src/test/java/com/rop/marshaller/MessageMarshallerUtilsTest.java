@@ -1,9 +1,9 @@
 /**
- * 版权声明：中图一购网络科技有限公司 版权所有 违者必究 2012 
  * 日    期：12-5-29
  */
 package com.rop.marshaller;
 
+import com.beust.jcommander.internal.Maps;
 import com.rop.MessageFormat;
 import com.rop.RopRequest;
 import com.rop.RopRequestContext;
@@ -21,7 +21,6 @@ import static org.testng.Assert.assertTrue;
 
 /**
  * <pre>
- * 功能说明：
  * </pre>
  *
  * @author 陈雄华
@@ -79,6 +78,12 @@ public class MessageMarshallerUtilsTest {
         row2.put("col4", 2000.34);
         table.add(row2);
         response.setTable(table);
+
+        HashMap<String,String> attaches = new HashMap<String, String>();
+        attaches.put("a","aa");
+        attaches.put("b","bb");
+        attaches.put("c","cc");
+        response.setAttaches(attaches);
 
         String message = MessageMarshallerUtils.getMessage(response, MessageFormat.json);
         assertTrue(message.indexOf("}") > -1);

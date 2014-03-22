@@ -1,5 +1,4 @@
 /**
- * 版权声明：中图一购网络科技有限公司 版权所有 违者必究 2012 
  * 日    期：12-8-4
  */
 package com.rop.sample.client;
@@ -8,12 +7,11 @@ import com.rop.client.ClientRequest;
 import com.rop.client.CompositeResponse;
 import com.rop.client.DefaultRopClient;
 import com.rop.sample.request.LogonRequest;
-import com.rop.sample.request.TelephoneConverter;
+import com.rop.sample.converter.TelephoneConverter;
 import com.rop.sample.response.LogonResponse;
 
 /**
  * <pre>
- * 功能说明：
  * </pre>
  *
  * @author 陈雄华

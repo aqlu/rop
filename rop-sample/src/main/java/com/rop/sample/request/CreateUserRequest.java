@@ -1,5 +1,4 @@
 /**
- * 版权声明：中图一购网络科技有限公司 版权所有 违者必究 2012 
  * 日    期：12-2-29
  */
 package com.rop.sample.request;
@@ -9,17 +8,14 @@ import com.rop.annotation.IgnoreSign;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import java.util.Date;
 import java.util.List;
 
 /**
  * <pre>
- * 功能说明：
  * </pre>
  *
  * @author 陈雄华
@@ -52,7 +48,13 @@ public class CreateUserRequest extends AbstractRopRequest {
 
     private boolean locked;
 
+    private Date date;
+
     private String favorites[];
+
+    @Null
+    @Pattern(regexp = "^((EXCEL)|(WORD))$")
+    private String fileType;
 
     public String getUserName() {
         return userName;
@@ -60,6 +62,22 @@ public class CreateUserRequest extends AbstractRopRequest {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 
     public String getPassword() {

@@ -1,17 +1,18 @@
 /**
- * 版权声明：中图一购网络科技有限公司 版权所有 违者必究 2012 
  * 日    期：12-2-29
  */
 package com.rop.sample.response;
 
 
+import com.rop.sample.sys.DateXmlAdapter;
+
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.Date;
 import java.util.List;
 
 /**
  * <pre>
- * 功能说明：
  * </pre>
  *
  * @author 陈雄华
@@ -35,6 +36,10 @@ public class CreateUserResponse{
 
     @XmlElement
     private List<Foo> fooList;
+
+    @XmlElement
+    @XmlJavaTypeAdapter(DateXmlAdapter.class)
+    private Date date;
 
     private boolean ok = true;
 
@@ -84,6 +89,14 @@ public class CreateUserResponse{
 
     public void setOk(boolean ok) {
         this.ok = ok;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
 

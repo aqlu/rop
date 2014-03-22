@@ -4,10 +4,11 @@
  */
 package com.rop.impl;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.*;
-
+import com.rop.*;
+import com.rop.annotation.*;
+import com.rop.config.SystemParameterNames;
+import com.rop.request.UploadFile;
+import com.rop.session.SessionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -17,11 +18,9 @@ import org.springframework.util.ClassUtils;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 
-import com.rop.*;
-import com.rop.annotation.*;
-import com.rop.config.SystemParameterNames;
-import com.rop.request.UploadFile;
-import com.rop.session.SessionManager;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.*;
 
 /**
  * <pre>

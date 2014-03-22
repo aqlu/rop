@@ -1,5 +1,5 @@
 /**
- * 版权声明：中图一购网络科技有限公司 版权所有 违者必究 2012 
+ * 版权声明： 版权所有 违者必究 2012
  * 日    期：12-6-1
  */
 package com.rop;
@@ -13,22 +13,19 @@ package com.rop;
  * @version 1.0
  */
 public interface RequestContextBuilder {
-
     /**
-     * 根据reqeuest请求对象，创建{@link RopRequestContext}实例。绑定系统参数，请求对象
-     *
+     * 根据reqeuest及response请求响应对象，创建{@link RopRequestContext}实例。绑定系统参数，请求对象
      * @param ropContext
      * @param request
+     * @param response
      * @return
      */
-    RopRequestContext buildBySysParams(RopContext ropContext, Object request);
+    RopRequestContext buildBySysParams(RopContext ropContext, Object request,Object response);
 
     /**
      * 绑定业务参数
      *
      * @param ropRequestContext
-     * @param request
-     * @param conversionService
      */
     void bindBusinessParams(RopRequestContext ropRequestContext);
 }
