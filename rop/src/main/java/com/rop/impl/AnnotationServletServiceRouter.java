@@ -639,8 +639,7 @@ public class AnnotationServletServiceRouter implements ServiceRouter {
                 ropResponse = serviceMethodAdapter.invokeServiceMethod(ropRequestContext);
             } catch (Exception e) { //出错则招聘服务不可用的异常
                 if (logger.isInfoEnabled()) {
-                    logger.info("调用" + ropRequestContext.getMethod() + "时发生异常，异常信息为：" + e.getMessage());
-                    e.printStackTrace();
+                    logger.info("调用{}时发生异常，异常信息为：{}", new Object[]{ropRequestContext.getMethod(), e.getMessage(), e});
                 }
                 ropResponse = new ServiceUnavailableErrorResponse(ropRequestContext.getMethod(), ropRequestContext.getLocale(), e);
             }
