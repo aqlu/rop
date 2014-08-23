@@ -280,7 +280,7 @@ public class SimpleRopRequestContext implements RopRequestContext {
 
     @Override
     public ServiceMethodDefinition getServiceMethodDefinition() {
-        return serviceMethodHandler.getServiceMethodDefinition();
+        return (null == serviceMethodHandler) ? null : serviceMethodHandler.getServiceMethodDefinition();
     }
 
     @Override
