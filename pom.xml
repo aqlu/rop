@@ -42,9 +42,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:http://git.dev.ofpay.com/git/commons/rop.git</connection>
-        <developerConnection>scm:git:http://git.dev.ofpay.com/git/commons/rop.git</developerConnection>
-        <url>http://git.dev.ofpay.com/git/commons/rop.git</url>
+        <connection>scm:git:http://git.dev.qianmi.com/commons/rop.git</connection>
+        <developerConnection>scm:git:http://git.dev.qianmi.com/commons/rop.git</developerConnection>
+        <url>http://git.dev.qianmi.com/commons/rop.git</url>
       <tag>HEAD</tag>
   </scm>
 
