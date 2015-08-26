@@ -4,6 +4,7 @@
  */
 package com.rop.security;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.NoSuchMessageException;
@@ -82,9 +83,9 @@ public class SubErrors {
         String subErrorCode = subErrorType.value();
         if (params.length > 0) {
             if (params.length == 1) {
-                subErrorCode = subErrorCode.replace(PARAM_1, params[0].toString());
+                subErrorCode = subErrorCode.replace(PARAM_1, params[0] == null ? null : params[0].toString());
             } else {
-                subErrorCode = subErrorCode.replace(PARAM_1, params[0].toString());
+                subErrorCode = subErrorCode.replace(PARAM_1, params[0] == null ? null : params[0].toString());
                 if (params[1] != null) {
                     subErrorCode = subErrorCode.replace(PARAM_2, params[1].toString());
                 }
