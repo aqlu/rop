@@ -51,7 +51,7 @@ public class SubErrors {
     /**
      * 获取对应子错误的主错误
      *
-     * @param subErrorCode
+     * @param subErrorType
      * @param locale
      * @return
      */
@@ -82,11 +82,11 @@ public class SubErrors {
         String subErrorCode = subErrorType.value();
         if (params.length > 0) {
             if (params.length == 1) {
-                subErrorCode = subErrorCode.replace(PARAM_1, (String) params[0]);
+                subErrorCode = subErrorCode.replace(PARAM_1, params[0].toString());
             } else {
-                subErrorCode = subErrorCode.replace(PARAM_1, (String) params[0]);
+                subErrorCode = subErrorCode.replace(PARAM_1, params[0].toString());
                 if (params[1] != null) {
-                    subErrorCode = subErrorCode.replace(PARAM_2, (String) params[1]);
+                    subErrorCode = subErrorCode.replace(PARAM_2, params[1].toString());
                 }
             }
         }
